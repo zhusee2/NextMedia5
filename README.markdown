@@ -8,8 +8,9 @@ NextMedia5 Safari Extension
 * 目前僅支援在單篇新聞頁上的動新聞
 
 NextMedia5 Safari Extension
+============================
 
-Play videos on Taiwan Apple Daily News website with native H.264 HTML5 videp=o player!
+Play videos on Taiwan Apple Daily News website with native H.264 HTML5 video player!
 
 Know issues
 ------------
