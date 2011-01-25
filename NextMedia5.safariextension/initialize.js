@@ -11,11 +11,11 @@ Visit: http://zhusee2.github.com/nextmedia5
 document.addEventListener('beforeload', function(event) {
 	if(event.target.tagName==='EMBED' && event.url==='/jwplayer/player.swf') {
     var flashVars = event.target.getAttribute('flashvars');
-    var flashVideoSrc = flashVars.match(/file\=(http.+\/).+\.flv/)[1];
+    var flashVideoSrc = flashVars.match(/file\=(http.+\/.+\.flv)/)[1];
     var posterSrc = flashVars.match(/image\=(http.+\.jpg)/)[1];
-    var newsID = location.href.match(/art_id\/(\d+)\//)[1];
     
-    var videoSrc = flashVideoSrc.replace(/\/video\//,'/wap_video/') + newsID + '.m4v';
+    var videoSrc = flashVideoSrc.replace(/\/video\/\//,'/wap_video/')
+                   .replace(/\.flv$/,'.m4v');
 
     $(event.target.parentElement)
       .addClass('nextmedia5Container')
