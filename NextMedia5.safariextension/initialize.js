@@ -19,7 +19,7 @@ document.addEventListener('beforeload', function(event) {
 
     $(event.target.parentElement)
       .addClass('nextmedia5Container')
-      .append('<video id="nextmedia5Player" width="630" height="355" preload="none" poster="' + posterSrc + '"><source src="' + videoSrc +'" /></video>')
+      .append('<video id="nextmedia5Player" width="630" height="355" preload="none" poster="' + posterSrc + '"><source src="' + videoSrc +'" type="video/mp4" /><source src="' + flashVideoSrc +'" type="video/x-flv" /></video>')
       .append('<div id="nextmedia5PlayButton"><a href="#">▲</a></div>');
     $(event.target).remove();
 
