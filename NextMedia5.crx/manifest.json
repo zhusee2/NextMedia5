@@ -1,0 +1,17 @@
+{
+  "name": "NextMedia5",
+  "version": "1.1.1",
+  "description": "PTT鄉民必備！免學現用的低調縮址解碼器，自動選擇0rz/台泥/便當狗等就是超簡單",/*
+  "icons": { 
+  	"16": "favicona.gif",
+  	"48": "favicon48.gif",
+  	"128": "favicon128.gif" },*/
+  "content_scripts": [
+    {
+      "matches": ["http://*.nextmedia.com/applenews/article/*"],
+      "css": ["video.css"],
+      "js": ["zepto.min.js","initialize.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
