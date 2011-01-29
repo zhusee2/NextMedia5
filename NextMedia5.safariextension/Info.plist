@@ -32,7 +32,7 @@
 		</array>
 		<key>Whitelist</key>
 		<array>
-			<string>http://*.nextmedia.com/applenews/article/*</string>
+			<string>http://*.nextmedia.com/*/article/*</string>
 		</array>
 	</dict>
 	<key>Description</key>
