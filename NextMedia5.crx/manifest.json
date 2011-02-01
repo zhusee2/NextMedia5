@@ -1,6 +1,6 @@
 {
   "name": "NextMedia5",
-  "version": "1.1.2",
+  "version": "1.2",
   "description": "在台灣蘋果日報網站上用原生的 H.264 HTML5 Video 看動新聞，跟 Flash 說掰掰！",
   "icons": { 
   	"128": "icon.png" },
