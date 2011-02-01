@@ -13,13 +13,15 @@ document.addEventListener('beforeload', function(event) {
     var flashVars = event.target.getAttribute('flashvars');
     var flashVideoSrc = flashVars.match(/file\=(http.+\/.+\.flv)/)[1];
     var posterSrc = flashVars.match(/image\=(http.+\.jpg)/)[1];
+    var videoHash = posterSrc.match(/\d\/(.*)_\d*.jpg/)[1];
     
-    var videoSrc = flashVideoSrc.replace(/\/video\/\//,'/wap_video/')
-                   .replace(/\.flv$/,'.m4v');
+    var videoSrcCandidate = flashVideoSrc.replace(/\/video\/\//,'/wap_video/')
+          .replace(/\.flv$/,'.m4v');
+    var videoSrc = videoSrcCandidate.replace(/\w*.m4v/,videoHash + '.m4v');
 
     $(event.target.parentElement)
       .addClass('nextmedia5Container')
-      .append('<video id="nextmedia5Player" width="630" height="355" preload="none" poster="' + posterSrc + '"><source src="' + videoSrc +'" type="video/mp4" /><source src="' + flashVideoSrc +'" type="video/x-flv" /></video>')
+      .append('<video id="nextmedia5Player" width="630" height="355" preload="none" poster="' + posterSrc + '"><source src="' + videoSrc +'" type="video/mp4" /><source src="' + videoSrcCandidate +'" type="video/mp4" /><source src="' + flashVideoSrc +'" type="video/x-flv" /></video>')
       .append('<div id="nextmedia5PlayButton"><a href="#">▲</a></div>');
     $(event.target).remove();
 
