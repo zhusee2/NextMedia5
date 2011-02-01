@@ -32,7 +32,7 @@
 		</array>
 		<key>Whitelist</key>
 		<array>
-			<string>http://*.nextmedia.com/*/article/*</string>
+			<string>http://tw.nextmedia.com/*/article/*</string>
 		</array>
 	</dict>
 	<key>Description</key>
@@ -45,7 +45,7 @@
 		<dict>
 			<key>Allowed Domains</key>
 			<array>
-				<string>*.nextmedia.com</string>
+				<string>tw.nextmedia.com</string>
 			</array>
 			<key>Level</key>
 			<string>Some</string>
