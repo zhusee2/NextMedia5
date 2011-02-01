@@ -5,7 +5,7 @@ NextMedia5 Safari Extension
 
 已知問題
 --------
-* 目前僅支援在單篇新聞頁上的動新聞
+* 尚未處理「動新聞」單元區塊的影片，僅支援在單篇新聞頁上看動新聞
 
 NextMedia5 Safari Extension
 ============================
