@@ -1,7 +1,7 @@
 /*
 
 NextMedia5 Safari Extension
-Version 1.2
+Version 1.2.1
 By Zhusee (zhusee@gmail.com)
 
 Visit: http://zhusee2.github.com/nextmedia5
@@ -11,13 +11,22 @@ Visit: http://zhusee2.github.com/nextmedia5
 document.addEventListener('beforeload', function(event) {
 	if(event.target.tagName==='EMBED' && event.url==='/jwplayer/player.swf') {
     var flashVars = event.target.getAttribute('flashvars');
-    var flashVideoSrc = flashVars.match(/file\=(http.+\/.+\.flv)/)[1];
+    var flashVideoSrc = flashVars.match(/file\=(http.+\/.+\.flv)/);
+    if(flashVideoSrc) flashVideoSrc= flashVideoSrc[1];
     var posterSrc = flashVars.match(/image\=(http.+\.jpg)/)[1];
     var videoHash = posterSrc.match(/\d\/(.*)_\d*.jpg/)[1];
     
-    var videoSrcCandidate = flashVideoSrc.replace(/\/video\/\//,'/wap_video/')
+    if(flashVideoSrc){
+        //legacy version
+        var videoSrcCandidate = flashVideoSrc.replace(/\/video\/\//,'/wap_video/')
                               .replace(/\.flv$/,'.m4v');
-    var videoSrc = videoSrcCandidate.replace(/\w*.m4v/,videoHash + '.m4v');
+        var videoSrc = videoSrcCandidate.replace(/\w*.m4v/,videoHash + '.m4v');
+    }else{
+        //new version(2011-Mar)
+        var flashVideoSrc = flashVars.match(/file\=(http.+\/.+\.mp4)/)[1];
+        var videoSrcCandidate = flashVideoSrc;
+        var videoSrc = videoSrcCandidate;
+    }
 
     $(event.target.parentElement)
       .addClass('nextmedia5Container')
