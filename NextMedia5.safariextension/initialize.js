@@ -2,9 +2,8 @@
 
 NextMedia5 Safari Extension
 Version 1.2.1
-By Zhusee (zhusee@gmail.com)
 
-Visit: http://zhusee2.github.com/nextmedia5
+Visit: https://github.com/zhusee2/NextMedia5
 
 */
 
