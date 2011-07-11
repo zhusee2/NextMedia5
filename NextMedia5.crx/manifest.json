@@ -6,7 +6,7 @@
   	"128": "icon.png" },*/
   "content_scripts": [
     {
-      "matches": ["http://*.nextmedia.com/*/article/*"],
+      "matches": ["http://*.nextmedia.com/*/article/*","http://*.nextmedia.com/animation/iplayer/*"],
       "css": ["video.css"],
       "js": ["zepto.min.js","initialize.js"],
       "run_at": "document_start"
