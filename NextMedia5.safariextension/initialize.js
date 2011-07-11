@@ -1,7 +1,7 @@
 /*
 
 NextMedia5 Safari Extension
-Version 1.2.1
+Version 1.3
 
 Visit: https://github.com/zhusee2/NextMedia5
 
@@ -12,11 +12,11 @@ document.addEventListener('beforeload', function(event) {
     var flashVars = event.target.getAttribute('flashvars');
     var flashVideoSrc = flashVars.match(/file\=(http.+\/.+\.flv)/);
     if(flashVideoSrc) flashVideoSrc= flashVideoSrc[1];
-    var posterSrc = flashVars.match(/image\=(http.+\.jpg)/)[1];
-    var videoHash = posterSrc.match(/\d\/(.*)_\d*.jpg/)[1];
+    var posterSrc = flashVars.match(/image\=(http.+\.jpg)/i)[1];
     
     if(flashVideoSrc){
         //legacy version
+        var videoHash = posterSrc.match(/\d\/(.*)_\d*.jpg/)[1];
         var videoSrcCandidate = flashVideoSrc.replace(/\/video\/\//,'/wap_video/')
                               .replace(/\.flv$/,'.m4v');
         var videoSrc = videoSrcCandidate.replace(/\w*.m4v/,videoHash + '.m4v');

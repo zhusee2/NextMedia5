@@ -33,6 +33,7 @@
 		<key>Whitelist</key>
 		<array>
 			<string>http://tw.nextmedia.com/*/article/*</string>
+			<string>http://tw.nextmedia.com/animation/iplayer/*</string>
 		</array>
 	</dict>
 	<key>Description</key>
