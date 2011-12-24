@@ -1,7 +1,7 @@
 /*
 
 NextMedia5 Safari Extension
-Version 1.3
+Version 1.4
 
 Visit: https://github.com/zhusee2/NextMedia5
 
