@@ -1,21 +1,31 @@
 NextMedia5 Safari Extension
 ===============================
 
-在台灣蘋果日報網站上用原生的 H.264 HTML5 Video 看動新聞，跟 Flash 說掰掰！
+在蘋果日報和壹電視網站上用原生的 H.264 HTML5 Video 看新聞，跟 Flash 說掰掰！
+
+支援網站
+--------
+* 台灣[蘋果日報全站](http://tw.nextmedia.com/)
+* 香港[蘋果動新聞](http://hk.dv.nextmedia.com/template/dv_channel/)
+* 壹電視 VOD 頁面 `(http://www.nexttv.com.tw/vod/*)`
 
 已知問題
 --------
-* 尚未處理「動新聞」單元區塊的影片，僅支援在單篇新聞頁上看動新聞
 * 若您有安裝 ClickToFlash 之類阻擋 Flash 的 Plugin/Extension，您可能需要將蘋果日報的網站加入例外清單以使用 NextMedia5
 
 NextMedia5 Safari Extension
 ============================
 
-Play videos on Taiwan Apple Daily News website with native H.264 HTML5 video player!
+Play videos on Apple Daily News and NextTV website with native H.264 HTML5 video player!
+
+Supported list
+--------------
+* Taiwan [Apple Daily Site](http://tw.nextmedia.com/)
+* Hong Kong [Apple Action News](http://hk.dv.nextmedia.com/template/dv_channel/)
+* NextTV VOD pages `(http://www.nexttv.com.tw/vod/*)` 
 
 Know issues
 ------------
-* Only supports videos embeded in news article pages now.
 * If you have Flash blockers like ClickToFlash installed, you'll have to add the website of Apple Daily News into the whitelist for NextMedia5 to work properly.
 
 Author info
