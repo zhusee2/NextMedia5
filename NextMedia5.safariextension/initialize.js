@@ -39,7 +39,7 @@ document.addEventListener('beforeload', function(event) {
     $(event.target).remove();
 
     $('#nextmedia5PlayButton a').live('click', function(e) {
-      var player = $('#nextmedia5Player').dom[0];
+      var player = $('#nextmedia5Player')[0];
       
       player.controls = true;
       player.play();
