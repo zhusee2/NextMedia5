@@ -34,6 +34,7 @@
 		<array>
 			<string>http://tw.nextmedia.com/*/article/*</string>
 			<string>http://tw.nextmedia.com/animation/iplayer/*</string>
+			<string>http://www.nexttv.com.tw/vod/*</string>
 		</array>
 	</dict>
 	<key>Description</key>
@@ -47,6 +48,7 @@
 			<key>Allowed Domains</key>
 			<array>
 				<string>tw.nextmedia.com</string>
+				<string>www.nexttv.com.tw</string>
 			</array>
 			<key>Level</key>
 			<string>Some</string>
