@@ -3,6 +3,7 @@
 }
 
 .nextmedia5Container #nextmedia5Player {
+  width: 100%;
   top: 0;
   left: 0;
 }

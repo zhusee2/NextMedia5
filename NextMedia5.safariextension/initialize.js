@@ -60,7 +60,7 @@ function createHTML5Player(flashPlayerDOM, videoSrc, posterSrc) {
   if (typeof videoSrc == 'string') videoSrc = [{format: 'mp4', src: videoSrc}];
   
   // Initialize <video> element
-  var videoElement = $('<video id="nextmedia5Player" width="630" height="355" preload="none">');
+  var videoElement = $('<video id="nextmedia5Player" preload="none">');
   
   if (posterSrc) $(videoElement).attr('poster', posterSrc);
   for (var i = 0; i < videoSrc.length; i++) {
