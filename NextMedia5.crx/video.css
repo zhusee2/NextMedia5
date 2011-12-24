@@ -3,6 +3,7 @@
 }
 
 .nextmedia5Container #nextmedia5Player {
+  width: 100%;
   top: 0;
   left: 0;
 }
@@ -18,6 +19,10 @@
   -webkit-border-radius: 64px;
   -webkit-box-shadow: inset 0 -78px 4px -24px rgba(0,0,0,.1);
 }
+td.nextmedia5Container #nextmedia5PlayButton {
+  top: 50%; /* NextTV VOD fix */
+  position: absolute;
+}
 
 .nextmedia5Container #nextmedia5PlayButton a {
   width: 100%;
@@ -26,6 +31,7 @@
   font-size: 100px;
   line-height: 128px;
   text-align: center;
+  text-decoration: none;
   display: block;
   -webkit-transform: rotate(90deg) scaleY(0.8) translateY(-0.1em);
 }
