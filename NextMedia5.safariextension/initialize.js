@@ -18,6 +18,8 @@ if (window.self == window.top) {
     document.addEventListener('beforeload', parseTWAppleDailyVideoSrc, true);
   } else if (location.href.match(/^https?:\/\/www\.nexttv\.com\.tw\/vod\/\d+/i)) {
     document.addEventListener('beforeload', parseTWNextTVVideoSrc, true);
+  } else {
+    document.addEventListener('beforeload', parseHKAppleDailyVideoSrc, true);
   }
 }
 
@@ -56,6 +58,17 @@ function parseTWAppleDailyVideoSrc(event) {
 
 }
 
+function parseHKAppleDailyVideoSrc(event) {
+
+  if(event.target.tagName==='EMBED' && event.url==='osmf/ApplePlayer.swf') {
+    var flashVars = event.target.getAttribute('flashvars'),
+        videoSrc = flashVars.match(/\&src=(http:.+\.mp4)\&/)[1],
+        posterSrc = flashVars.match(/\&poster=(\/images.+\.jpg)\&/)[1];
+
+    createHTML5Player(event.target, videoSrc, posterSrc);
+    event.preventDefault();
+  }
+}
 
 function parseTWNextTVVideoSrc(event) {
   if(event.target.tagName==='OBJECT' && event.url.match(/:\/\/.*nexttv.com.tw\/.+StrobeMediaPlayback\.swf/)) {
