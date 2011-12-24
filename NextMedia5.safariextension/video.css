@@ -27,6 +27,7 @@
   font-size: 100px;
   line-height: 128px;
   text-align: center;
+  text-decoration: none;
   display: block;
   -webkit-transform: rotate(90deg) scaleY(0.8) translateY(-0.1em);
 }
