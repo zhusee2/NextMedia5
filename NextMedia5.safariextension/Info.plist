@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Zhusee</string>
 	<key>Builder Version</key>
-	<string>7534.52.7</string>
+	<string>7536.19</string>
 	<key>CFBundleDisplayName</key>
 	<string>NextMedia5</string>
 	<key>CFBundleIdentifier</key>
@@ -34,8 +34,8 @@
 		</array>
 		<key>Whitelist</key>
 		<array>
-			<string>http://tw.nextmedia.com/*/article/*</string>
-			<string>http://tw.nextmedia.com/animation/iplayer/*</string>
+			<string>http://www.appledaily.com.tw/*/article/*</string>
+			<string>http://www.appledaily.com.tw/animation/*</string>
 			<string>http://hk.dv.nextmedia.com/template/dv_channel/*</string>
 			<string>http://www.nexttv.com.tw/vod/*</string>
 		</array>
@@ -53,6 +53,7 @@
 				<string>tw.nextmedia.com</string>
 				<string>hk.dv.nextmedia.com</string>
 				<string>www.nexttv.com.tw</string>
+				<string>www.appledaily.com.tw</string>
 			</array>
 			<key>Level</key>
 			<string>Some</string>
