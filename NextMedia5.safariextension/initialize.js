@@ -57,7 +57,7 @@ function parseHKAppleDailyVideoSrc(event) {
 }
 
 function parseTWNextTVVideoSrc(event) {
-  if(event.target.tagName==='OBJECT' && event.url.match(/:\/\/.*nexttv.com.tw\/.+StrobeMediaPlayback\.swf/)) {
+  if(event.target.tagName==='OBJECT' && event.url.match(/:\/\/tw\.adx\.nextmedia\.com\/.+flowplayer.+\.swf/)) {
     var videoSrc = document.querySelector('#ntt-vod-src-detailview').value,
         posterSrc = document.querySelector('#ntt-vod-img-src').value;
 
