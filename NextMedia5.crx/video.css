@@ -7,6 +7,14 @@
   top: 0;
   left: 0;
 }
+#animhome .nextmedia5Container {
+  height: 360px;
+  width: 640px;
+  position: absolute;
+  top: 282px;
+  left: 34px;
+  z-index: 98;
+}
 
 .nextmedia5Container #nextmedia5PlayButton {
   width: 128px;

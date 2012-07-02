@@ -14,7 +14,7 @@ Array.prototype.pushVideo = function pushVideoToArray(format, src) {
 
 // Listen to BeforeLoad events
 if (window.self == window.top) {
-  if (location.href.match(/^https?:\/\/tw\.nextmedia\.com/i)) {
+  if (location.href.match(/^https?:\/\/www\.appledaily\.com\.tw/i)) {
     document.addEventListener('beforeload', parseTWAppleDailyVideoSrc, true);
   } else if (location.href.match(/^https?:\/\/www\.nexttv\.com\.tw\/vod\/\d+/i)) {
     document.addEventListener('beforeload', parseTWNextTVVideoSrc, true);
@@ -25,30 +25,16 @@ if (window.self == window.top) {
 
 
 function parseTWAppleDailyVideoSrc(event) {
-
-	if(event.target.tagName==='EMBED' && event.url==='/jwplayer/player.swf') {
-    var flashVars = event.target.getAttribute('flashvars');
-    var flashVideoSrc = flashVars.match(/file\=(http.+\/.+\.flv)/);
-    if(flashVideoSrc) flashVideoSrc= flashVideoSrc[1];
-    var posterSrc = flashVars.match(/image\=(http.+\.jpg)/i)[1];
+  if (event.target.nodeName === 'IFRAME' && event.url.match(/http\:\/\/tw\.nextmedia\.com\/playeriframe/)) {
+    var videoDate = event.url.match(/\/IssueID\/(\d+)\/Photo/)[1],
+        posterID = event.url.match(/Photo\/(.+\.jpg)\/Video/)[1],
+        videoID = event.url.match(/Video\/(.+\.mp4)/)[1];
+    
+    var videoSrc = 'http://video.appledaily.com.tw/video/' + videoDate + '/' + videoID,
+        posterSrc = 'http://twimg.edgesuite.net/www/extfile/artvideo/' + videoDate + '/' + posterID;
     
     var videoSources = [];
-    
-    if (flashVideoSrc) {
-        //legacy version
-        var videoHash = posterSrc.match(/\d\/(.*)_\d*.jpg/)[1];
-        var videoSrcCandidate = flashVideoSrc.replace(/\/video\/\//,'/wap_video/')
-                              .replace(/\.flv$/,'.m4v');
-        var videoSrc = videoSrcCandidate.replace(/\w*.m4v/,videoHash + '.m4v');
-        
-        videoSources.pushVideo('mp4', videoSrc);
-        videoSources.pushVideo('x-flv', flashVideoSrc);
-        videoSources.pushVideo('mp4', videoSrcCandidate);
-    } else {
-        //new version(2011-Mar)
-        var videoSrc = flashVars.match(/file\=(http.+\/.+\.mp4)/)[1];
-        videoSources.pushVideo('mp4', videoSrc);
-    }
+    videoSources.pushVideo('mp4', videoSrc);
     
     createHTML5Player(event.target, videoSources, posterSrc);
     
@@ -96,16 +82,16 @@ function createHTML5Player(flashPlayerDOM, videoSrc, posterSrc) {
       .append(videoElement)
       .append('<div id="nextmedia5PlayButton"><a href="#">▲</a></div>');
 
-    $(flashPlayerDOM).remove();
+  $(flashPlayerDOM).remove();
 
-    $('#nextmedia5PlayButton a').live('click', function(e) {
-      var player = $('#nextmedia5Player')[0];
-      
-      player.controls = true;
-      player.play();
-      
-      $(this.parentElement).remove();
-      e.preventDefault();
-    });
+  $('#nextmedia5PlayButton a').live('click', function(e) {
+    var player = $('#nextmedia5Player')[0];
+    
+    player.controls = true;
+    player.play();
+    
+    $(this.parentElement).remove();
+    e.preventDefault();
+  });
   
 }
