@@ -14,7 +14,7 @@ Array.prototype.pushVideo = function pushVideoToArray(format, src) {
 
 // Listen to BeforeLoad events
 if (window.self == window.top) {
-  if (location.href.match(/^https?:\/\/www\.appledaily\.com\.tw/i)) {
+  if (location.href.match(/^https?:\/\/(www\.)?appledaily\.com\.tw/i)) {
     document.addEventListener('beforeload', parseTWAppleDailyVideoSrc, true);
   } else if (location.href.match(/^https?:\/\/www\.nexttv\.com\.tw\/vod\/\d+/i)) {
     document.addEventListener('beforeload', parseTWNextTVVideoSrc, true);
