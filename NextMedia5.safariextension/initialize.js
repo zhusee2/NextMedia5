@@ -84,7 +84,7 @@ function createHTML5Player(flashPlayerDOM, videoSrc, posterSrc) {
 
   $(flashPlayerDOM).remove();
 
-  $('#nextmedia5PlayButton a').live('click', function(e) {
+  $('.nextmedia5Container').on('click', 'a', function(e) {
     var player = $('#nextmedia5Player')[0];
     
     player.controls = true;
