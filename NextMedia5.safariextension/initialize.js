@@ -16,7 +16,7 @@ Array.prototype.pushVideo = function pushVideoToArray(format, src) {
 if (window.self == window.top) {
   if (location.href.match(/^https?:\/\/(www\.)?appledaily\.com\.tw/i)) {
     document.addEventListener('beforeload', parseTWAppleDailyVideoSrc, true);
-  } else if (location.href.match(/^https?:\/\/www\.nexttv\.com\.tw\/vod\/\d+/i)) {
+  } else if (location.href.match(/^https?:\/\/www\.nexttv\.com\.tw\/news\/realtime\/\w+\/\d+/i)) {
     document.addEventListener('beforeload', parseTWNextTVVideoSrc, true);
   } else {
     document.addEventListener('beforeload', parseHKAppleDailyVideoSrc, true);
@@ -57,7 +57,7 @@ function parseHKAppleDailyVideoSrc(event) {
 }
 
 function parseTWNextTVVideoSrc(event) {
-  if(event.target.tagName==='OBJECT' && event.url.match(/:\/\/tw\.adx\.nextmedia\.com\/.+flowplayer.+\.swf/)) {
+  if(event.target.tagName==='OBJECT' && event.url.match(/flowplayer.+\.swf/)) {
     var videoSrc = document.querySelector('#ntt-vod-src-detailview').value,
         posterSrc = document.querySelector('#ntt-vod-img-src').value;
 
