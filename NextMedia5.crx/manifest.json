@@ -1,12 +1,13 @@
 {
   "name": "NextMedia5",
-  "version": "1.4",
+  "version": "1.5.3",
+  "manifest_version": 2,
   "description": "在蘋果日報與壹電視網站上用原生的 H.264 HTML5 Video 看動新聞，跟 Flash 說掰掰！",/*
   "icons": { 
   	"128": "icon.png" },*/
   "content_scripts": [
     {
-      "matches": ["http://tw.nextmedia.com/*/article/*","http://tw.nextmedia.com/animation/iplayer/*","http://hk.dv.nextmedia.com/template/dv_channel/*","http://www.nexttv.com.tw/vod/*"],
+      "matches": ["http://www.appledaily.com.tw/*/article/*","http://www.appledaily.com.tw/animation/*","http://hk.dv.nextmedia.com/template/dv_channel/*","http://www.nexttv.com.tw/news/realtime/*","http://www.nexttv.com.tw/variety/enews/*"],
       "css": ["video.css"],
       "js": ["zepto.min.js","initialize.js"],
       "run_at": "document_start"

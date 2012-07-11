@@ -1,7 +1,7 @@
 /*
 
 NextMedia5 Safari Extension
-Version 1.4
+Version 1.5.3
 
 Visit: https://github.com/zhusee2/NextMedia5
 
@@ -14,9 +14,9 @@ Array.prototype.pushVideo = function pushVideoToArray(format, src) {
 
 // Listen to BeforeLoad events
 if (window.self == window.top) {
-  if (location.href.match(/^https?:\/\/www\.appledaily\.com\.tw/i)) {
+  if (location.href.match(/^https?:\/\/(www\.)?appledaily\.com\.tw/i)) {
     document.addEventListener('beforeload', parseTWAppleDailyVideoSrc, true);
-  } else if (location.href.match(/^https?:\/\/www\.nexttv\.com\.tw\/vod\/\d+/i)) {
+  } else if (location.href.match(/^https?:\/\/(www\.)?nexttv\.com\.tw\/\S+\/\d+/i)) {
     document.addEventListener('beforeload', parseTWNextTVVideoSrc, true);
   } else {
     document.addEventListener('beforeload', parseHKAppleDailyVideoSrc, true);
@@ -57,7 +57,7 @@ function parseHKAppleDailyVideoSrc(event) {
 }
 
 function parseTWNextTVVideoSrc(event) {
-  if(event.target.tagName==='OBJECT' && event.url.match(/:\/\/.*nexttv.com.tw\/.+StrobeMediaPlayback\.swf/)) {
+  if(event.target.tagName==='OBJECT' && event.url.match(/flowplayer.+\.swf/)) {
     var videoSrc = document.querySelector('#ntt-vod-src-detailview').value,
         posterSrc = document.querySelector('#ntt-vod-img-src').value;
 
@@ -84,7 +84,7 @@ function createHTML5Player(flashPlayerDOM, videoSrc, posterSrc) {
 
   $(flashPlayerDOM).remove();
 
-  $('#nextmedia5PlayButton a').live('click', function(e) {
+  $('.nextmedia5Container').on('click', 'a', function(e) {
     var player = $('#nextmedia5Player')[0];
     
     player.controls = true;
