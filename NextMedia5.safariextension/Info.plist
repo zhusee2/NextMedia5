@@ -38,6 +38,7 @@
 			<string>http://www.appledaily.com.tw/animation/*</string>
 			<string>http://hk.dv.nextmedia.com/template/dv_channel/*</string>
 			<string>http://www.nexttv.com.tw/news/realtime/*</string>
+			<string>http://www.nexttv.com.tw/variety/enews/*</string>
 		</array>
 	</dict>
 	<key>Description</key>

@@ -1,7 +1,7 @@
 /*
 
 NextMedia5 Safari Extension
-Version 1.5.2
+Version 1.5.3
 
 Visit: https://github.com/zhusee2/NextMedia5
 
@@ -16,7 +16,7 @@ Array.prototype.pushVideo = function pushVideoToArray(format, src) {
 if (window.self == window.top) {
   if (location.href.match(/^https?:\/\/(www\.)?appledaily\.com\.tw/i)) {
     document.addEventListener('beforeload', parseTWAppleDailyVideoSrc, true);
-  } else if (location.href.match(/^https?:\/\/www\.nexttv\.com\.tw\/news\/realtime\/\w+\/\d+/i)) {
+  } else if (location.href.match(/^https?:\/\/(www\.)?nexttv\.com\.tw\/\S+\/\d+/i)) {
     document.addEventListener('beforeload', parseTWNextTVVideoSrc, true);
   } else {
     document.addEventListener('beforeload', parseHKAppleDailyVideoSrc, true);
