@@ -30,9 +30,7 @@ function parseTWAppleDailyVideoSrc(event) {
   var scriptElemet = $('.mediabox script, #playerVideo script'),
       rawScript = "", videoSrc = "", posterSrc = "",
       videoSources = [],
-      playerDom = $('#flow_player')[0];
-
-  console.log(scriptElemet);
+      playerDom = $('#flow_player');
 
   if (scriptElemet.length > 0) {
     rawScript = scriptElemet[0].innerHTML;
@@ -40,7 +38,7 @@ function parseTWAppleDailyVideoSrc(event) {
     posterSrc = rawScript.match(/setInitialImage\('(.+)'\)/)[1];
 
     videoSources.pushVideo('mp4', videoSrc);
-    createHTML5Player(playerDom, videoSources, posterSrc);
+    createHTML5Player(playerDom[0], videoSources, posterSrc);
   }
 }
 

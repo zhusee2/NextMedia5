@@ -37,6 +37,7 @@
 		</array>
 		<key>Whitelist</key>
 		<array>
+			<string>http://www.appledaily.com.tw/appledaily/article/*</string>
 			<string>http://www.appledaily.com.tw/animation/*</string>
 		</array>
 	</dict>
