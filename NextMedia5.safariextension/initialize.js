@@ -12,10 +12,12 @@ Array.prototype.pushVideo = function pushVideoToArray(format, src) {
   this.push({'format': format, 'src': src});
 }
 
+var flashAvailability = (navigator.plugins["Shockwave Flash"]) && (navigator.mimeTypes["application/x-shockwave-flash"]);
+
 // Listen to BeforeLoad events
 if (window.self == window.top) {
   if (location.href.match(/^https?:\/\/(www\.)?appledaily\.com\.tw/i)) {
-    document.addEventListener('beforeload', parseTWAppleDailyVideoSrc, true);
+    parseTWAppleDailyVideoSrc();
   } else if (location.href.match(/^https?:\/\/(www\.)?nexttv\.com\.tw\/\S+\/\d+/i)) {
     document.addEventListener('beforeload', parseTWNextTVVideoSrc, true);
   } else {
@@ -25,23 +27,21 @@ if (window.self == window.top) {
 
 
 function parseTWAppleDailyVideoSrc(event) {
-  if (event.target.nodeName === 'IFRAME' && event.url.match(/http\:\/\/tw\.nextmedia\.com\/playeriframe/)) {
-    var videoDate = event.url.match(/\/IssueID\/(\d+)\/Photo/)[1],
-        posterID = event.url.match(/Photo\/(.+\.jpg)\/Video/)[1],
-        videoID = event.url.match(/Video\/(.+\.mp4)/)[1];
-    
-    var videoSrc = 'http://video.appledaily.com.tw/video/' + videoDate + '/' + videoID,
-        posterSrc = 'http://twimg.edgesuite.net/www/extfile/artvideo/' + videoDate + '/' + posterID;
-    
-    var videoSources = [];
+  var scriptElemet = $('.mediabox script, #playerVideo script'),
+      rawScript = "", videoSrc = "", posterSrc = "",
+      videoSources = [],
+      playerDom = $('#flow_player')[0];
+
+  console.log(scriptElemet);
+
+  if (scriptElemet.length > 0) {
+    rawScript = scriptElemet[0].innerHTML;
+    videoSrc = rawScript.match(/http\:\/\/.+\.mp4/)[0];
+    posterSrc = rawScript.match(/setInitialImage\('(.+)'\)/)[1];
+
     videoSources.pushVideo('mp4', videoSrc);
-    
-    createHTML5Player(event.target, videoSources, posterSrc);
-    
-    event.preventDefault();
-
+    createHTML5Player(playerDom, videoSources, posterSrc);
   }
-
 }
 
 function parseHKAppleDailyVideoSrc(event) {
@@ -68,10 +68,10 @@ function parseTWNextTVVideoSrc(event) {
 
 function createHTML5Player(flashPlayerDOM, videoSrc, posterSrc) {
   if (typeof videoSrc == 'string') videoSrc = [{format: 'mp4', src: videoSrc}];
-  
+
   // Initialize <video> element
   var videoElement = $('<video id="nextmedia5Player" preload="none">');
-  
+
   if (posterSrc) $(videoElement).attr('poster', posterSrc);
   for (var i = 0; i < videoSrc.length; i++) {
     $(videoElement).append('<source src="' + videoSrc[i].src +'" type="video/' + videoSrc[i].format + '" />')
@@ -86,12 +86,12 @@ function createHTML5Player(flashPlayerDOM, videoSrc, posterSrc) {
 
   $('.nextmedia5Container').on('click', 'a', function(e) {
     var player = $('#nextmedia5Player')[0];
-    
+
     player.controls = true;
     player.play();
-    
+
     $(this.parentElement).remove();
     e.preventDefault();
   });
-  
+
 }
