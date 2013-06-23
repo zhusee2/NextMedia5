@@ -18,10 +18,9 @@ var flashAvailability = (navigator.plugins["Shockwave Flash"]) && (navigator.mim
 if (window.self == window.top) {
   if (location.href.match(/^https?:\/\/(www\.)?appledaily\.com\.tw/i)) {
     parseTWAppleDailyVideoSrc();
-  } else if (location.href.match(/^https?:\/\/(www\.)?nexttv\.com\.tw\/\S+\/\d+/i)) {
+  }
+  if (location.href.match(/^https?:\/\/(www\.)?nexttv\.com\.tw\/\S+\/\d+/i)) {
     parseTWNextTVVideoSrc();
-  } else {
-    document.addEventListener('beforeload', parseHKAppleDailyVideoSrc, true);
   }
 }
 
@@ -50,18 +49,6 @@ function parseTWAppleDailyVideoSrc(event) {
         setTimeout(renderPlayer, 100);
       });
     }
-  }
-}
-
-function parseHKAppleDailyVideoSrc(event) {
-
-  if(event.target.tagName==='EMBED' && event.url==='osmf/ApplePlayer.swf') {
-    var flashVars = event.target.getAttribute('flashvars'),
-        videoSrc = flashVars.match(/\&src=(http:.+\.mp4)\&/)[1],
-        posterSrc = flashVars.match(/\&poster=(\/images.+\.jpg)\&/)[1];
-
-    createHTML5Player(event.target, videoSrc, posterSrc);
-    event.preventDefault();
   }
 }
 
