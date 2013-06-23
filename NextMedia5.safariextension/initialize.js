@@ -19,7 +19,7 @@ if (window.self == window.top) {
   if (location.href.match(/^https?:\/\/(www\.)?appledaily\.com\.tw/i)) {
     parseTWAppleDailyVideoSrc();
   } else if (location.href.match(/^https?:\/\/(www\.)?nexttv\.com\.tw\/\S+\/\d+/i)) {
-    document.addEventListener('beforeload', parseTWNextTVVideoSrc, true);
+    parseTWNextTVVideoSrc();
   } else {
     document.addEventListener('beforeload', parseHKAppleDailyVideoSrc, true);
   }
@@ -66,12 +66,12 @@ function parseHKAppleDailyVideoSrc(event) {
 }
 
 function parseTWNextTVVideoSrc(event) {
-  if(event.target.tagName==='OBJECT' && event.url.match(/flowplayer.+\.swf/)) {
-    var videoSrc = document.querySelector('#ntt-vod-src-detailview').value,
-        posterSrc = document.querySelector('#ntt-vod-img-src').value;
+  if ($('#ntt-vod-src-detailview').length > 0) {
+    var videoSrc = $('#ntt-vod-src-detailview').val(),
+        posterSrc = $('#ntt-vod-img-src').val(),
+        playerDOM = $('#flow_player');
 
-    createHTML5Player(event.target, videoSrc, posterSrc);
-    event.preventDefault();
+    createHTML5Player(playerDOM[0], videoSrc, posterSrc);
   }
 }
 

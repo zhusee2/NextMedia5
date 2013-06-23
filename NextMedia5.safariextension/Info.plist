@@ -39,6 +39,7 @@
 		<array>
 			<string>http://www.appledaily.com.tw/appledaily/article/*</string>
 			<string>http://www.appledaily.com.tw/animation/*</string>
+			<string>http://www.nexttv.com.tw/*</string>
 		</array>
 	</dict>
 	<key>Description</key>
