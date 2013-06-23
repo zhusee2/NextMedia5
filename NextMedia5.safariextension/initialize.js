@@ -29,8 +29,12 @@ if (window.self == window.top) {
 function parseTWAppleDailyVideoSrc(event) {
   var scriptElemet = $('.mediabox script, #playerVideo script'),
       rawScript = "", videoSrc = "", posterSrc = "",
-      videoSources = [],
-      playerDom = $('#flow_player');
+      videoSources = [];
+
+  var renderPlayer = function() {
+        var playerDOM = $('#flow_player');
+        createHTML5Player(playerDOM[0], videoSources, posterSrc);
+      };
 
   if (scriptElemet.length > 0) {
     rawScript = scriptElemet[0].innerHTML;
@@ -38,7 +42,14 @@ function parseTWAppleDailyVideoSrc(event) {
     posterSrc = rawScript.match(/setInitialImage\('(.+)'\)/)[1];
 
     videoSources.pushVideo('mp4', videoSrc);
-    createHTML5Player(playerDom[0], videoSources, posterSrc);
+
+    if ($('#flow_player').length > 0) {
+      renderPlayer();
+    } else {
+      $('.mediabox, #playerVideo').on('click', '.yes', function(event) {
+        setTimeout(renderPlayer, 100);
+      });
+    }
   }
 }
 
